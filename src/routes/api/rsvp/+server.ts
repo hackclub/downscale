@@ -14,7 +14,7 @@ export const POST: RequestHandler = async ({ request }) => {
 		return json({ error: 'Invalid email address' }, { status: 400 });
 	}
 
-	const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/rsvps`, {
+	const response = await fetch(`https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/tblVOFPw3F10Phk8h`, {
 		method: 'POST',
 		headers: {
 			Authorization: `Bearer ${AIRTABLE_API_KEY}`,
