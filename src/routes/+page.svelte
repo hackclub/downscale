@@ -4,6 +4,7 @@
 	import OutlineFilter from "$lib/OutlineFilter.svelte";
 	import ShinyTitle from "$lib/ShinyTitle.svelte";
 	import gsap from "gsap";
+	import WorkshopForm from "$lib/WorkshopForm.svelte";
 
 	let showEmailInput = $state(false);
 	let isSubmitting = $state(false);
@@ -270,6 +271,25 @@
             </div>
         </div>
     </div>    
+
+    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0 mt-12">
+        <div class="workshop-panel__notches" aria-hidden="true"></div>
+        <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
+        <div class="grid grid-cols-[auto_1fr] max-md:grid-cols-1 gap-x-8 gap-y-5 items-start">
+            <div class="workshop-kicker text-p8 text-p-gray uppercase leading-none max-md:w-max">
+                clubs
+            </div>
+            <div>
+                <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
+                    RUN A WORKSHOP!
+                </h2>
+                <p class="text-p8 text-p-white">
+                    Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one?<span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
+                </p>
+                <WorkshopForm />
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- <div class="bg-p-red-1 relative z-2">
@@ -306,6 +326,41 @@
         padding-bottom: 10px;
     }
 
+    .workshop-panel {
+        border-bottom: 10px solid var(--color-p-navy);
+    }
+
+    .workshop-panel__notches {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, var(--color-p-red-1) 40px, transparent 5px) top left / 80px 5px repeat-x,
+            linear-gradient(90deg, transparent 40px, var(--color-p-navy) 5px, var(--color-p-navy) 80px, transparent 10px) bottom left / 80px 5px repeat-x;
+    }
+    .workshop-panel__notches-bottom {
+        position: absolute;
+        transform: translateY(15px);
+        inset: 0;
+        pointer-events: none;
+        background:
+            linear-gradient(90deg, var(--color-p-navy) 40px, transparent 5px, transparent 80px, var(--color-p-navy) 10px) bottom left / 80px 5px repeat-x;
+    }
+
+    .workshop-kicker {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        transform: rotate(180deg);
+        padding-top: 5px;
+    }
+
+    @media (max-width: 767px) {
+        .workshop-kicker {
+            writing-mode: horizontal-tb;
+            transform: none;
+        }
+    }
+
     .animate-frame-swap {
         animation: frame-swap 4s steps(1) infinite;
     }
@@ -330,5 +385,3 @@
         }
     }
 </style>
-
-

@@ -97,7 +97,17 @@ del(bullets, item)             -- removes one item`;
 - Collision detection - bullets destroy enemies
 - A score counter
 - A game over screen with restart
-- **[Prize]!**
+
+### Demo
+
+<iframe
+	title="Space Shooter demo"
+	src="https://www.lexaloffle.com/bbs/widget.php?pid=downscaleclubsdemo"
+	allowfullscreen
+	width="621"
+	height="513"
+	style="border: none; overflow: hidden; max-width: 100%;"
+></iframe>
 
 ---
 
@@ -1165,6 +1175,110 @@ Try each of these deliberately. Observe what happens and explain why.
 - Set spawn rate to `rnd(100) < 100`
 - Remove the line that deletes off-screen bullets
 - Change `and` to `or` in the collision check
+
+---
+
+## Ship It to GitHub
+
+### Context
+
+You have a working game. Now you need to put it somewhere the world can see it. GitHub is where developers store, share, and collaborate on code. Every project you finish deserves to live there - not just on your computer.
+
+Shipping means publishing. A game that exists only on your machine is invisible. A game on GitHub has a permanent home, a history, and a link you can share.
+
+### What you need before starting
+
+- Your finished PICO-8 cartridge saved as a `.p8` file **or** exported as a `.p8.png` file
+- A free GitHub account - create one at [github.com](https://github.com) if you do not have one
+
+### How to save your cartridge in PICO-8
+
+At the PICO-8 command prompt, type:
+
+```text
+save spaceshooter.p8
+```
+
+This creates a `spaceshooter.p8` file in your PICO-8 cartridge folder. You can also export a playable PNG cartridge:
+
+```text
+export spaceshooter.p8.png
+```
+
+Either file works for GitHub. The `.p8.png` is a self-contained image that anyone with PICO-8 can drag directly into the editor to run.
+
+### Step 1 - Create a new repository
+
+1. Go to [github.com/new](https://github.com/new)
+2. Name your repository something like `space-shooter-pico8`
+3. Add a short description, e.g. *"A PICO-8 space shooter built from scratch"*
+4. Leave it set to **Public** so others can see it
+5. Check the box that says **Add a README file**
+6. Click **Create repository**
+
+### Step 2 - Upload your file
+
+1. Inside your new repository, click **uploading an existing file** (the link appears in the quick setup area)
+2. Drag and drop your `spaceshooter.p8` or `spaceshooter.p8.png` file into the browser window
+3. Wait for the upload bar to finish
+
+### Step 3 - Write a commit message and publish
+
+1. Scroll down to the **Commit changes** section
+2. In the first text box, write a short message describing what you are adding - for example: `Initial commit` or `Add space shooter cartridge`
+3. Leave the option set to **Commit directly to the main branch**
+4. Click **Commit changes**
+
+Your cartridge is now live on GitHub. The URL looks like:
+
+```text
+https://github.com/YOUR-USERNAME/space-shooter-pico8
+```
+
+### Step 4 - Write your README
+
+A README is the first thing anyone sees when they visit your repository. GitHub created one for you automatically. Click the pencil icon on the README to edit it.
+
+Replace the default text with something like this:
+
+```md
+# Space Shooter
+
+A PICO-8 space shooter built from scratch.
+
+## How to play
+- Arrow keys: move left and right
+- Z: shoot
+- Destroy enemies before they reach the bottom
+- Press X to restart after game over
+
+## How to run
+Download `spaceshooter.p8` and open it in PICO-8,
+or drag `spaceshooter.p8.png` into the PICO-8 window.
+```
+
+Click **Commit changes** again to save the README.
+
+<Prediction>
+
+**Think first:** Why does a README matter? If someone finds your repository, what questions will they have in the first ten seconds? Write down three questions a stranger might ask, then check whether your README answers all three.
+
+</Prediction>
+
+### Step 5 - Share your link
+
+Copy your repository URL and post it in the club channel. This is your ship moment.
+
+<Challenge>
+
+**Checklist - before you share**
+
+- Your `.p8` or `.p8.png` file is visible in the repository
+- Your README explains what the game is and how to play it
+- Your repository is set to Public
+- The URL works when you open it in a new tab
+
+</Challenge>
 
 ---
 
