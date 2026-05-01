@@ -38,9 +38,8 @@
 		padding: calc(var(--px) * 2) calc(var(--px) * 3);
 		cursor: pointer;
 		font-family: var(--font-pico);
-		font-weight: 700;
 		color: var(--color-p-gray);
-		transition: border-color 0.15s steps(2), color 0.15s steps(2);
+		transition: border-color 0.1s steps(2), color 0.1s steps(2);
 		flex-shrink: 0;
 		appearance: none;
 		-webkit-tap-highlight-color: transparent;
@@ -71,7 +70,22 @@
 		letter-spacing: 1.5px;
 		line-height: 1;
 		white-space: nowrap;
-		transition: color 0.15s steps(2);
+		max-width: 0;
+		opacity: 0;
+		overflow: hidden;
+		margin-right: calc(var(--px) * -3);
+		transition:
+			max-width 0.08s steps(3),
+			opacity 0.06s steps(2),
+			margin-right 0.08s steps(3),
+			color 0.1s steps(2);
+	}
+
+	.acc-switch:hover .acc-label,
+	.acc-switch:focus-visible .acc-label {
+		max-width: calc(var(--px) * 80);
+		opacity: 1;
+		margin-right: 0;
 	}
 
 	.acc-switch.compact .acc-label {
@@ -95,7 +109,7 @@
 		inset: 0;
 		width: 0%;
 		background: var(--color-p-red-2);
-		transition: width 0.22s steps(5);
+		transition: width 0.12s steps(4);
 	}
 
 	.acc-switch.on .acc-fill {
@@ -112,8 +126,8 @@
 		height: calc(var(--px) * 5);
 		background: var(--color-p-gray);
 		transition:
-			transform 0.22s steps(5),
-			background 0.22s steps(2);
+			transform 0.12s steps(4),
+			background 0.12s steps(2);
 		z-index: 1;
 		display: flex;
 		align-items: center;
@@ -124,7 +138,7 @@
 		width: var(--px);
 		height: var(--px);
 		background: var(--color-p-navy);
-		transition: background 0.22s steps(2);
+		transition: background 0.12s steps(2);
 	}
 
 	.acc-switch:hover .acc-knob {
