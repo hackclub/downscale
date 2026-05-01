@@ -272,7 +272,7 @@
         </div>
     </div>    
 
-    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0 mt-12">
+    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0 mt-12" id="clubs">
         <div class="workshop-panel__notches" aria-hidden="true"></div>
         <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
         <div class="grid grid-cols-[auto_1fr] max-md:grid-cols-1 gap-x-8 gap-y-5 items-start">
