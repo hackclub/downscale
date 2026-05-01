@@ -52,7 +52,7 @@
 		if (!browser) return;
 		try {
 			await document.fonts.load('100px "PICO-8"');
-			await document.fonts.load('100px "PxPlus IBM VGA9"');
+			await document.fonts.load('100px "Monocraft"');
 			await document.fonts.ready;
 		} catch {}
 
@@ -71,7 +71,7 @@
 		};
 
 		const pico = measure('"PICO-8", monospace');
-		const mono = measure('"PxPlus IBM VGA9", monospace');
+		const mono = measure('"Monocraft", monospace');
 
 		if (pico.width <= 0 || mono.width <= 0) return;
 
@@ -93,7 +93,7 @@
 			`descent-override:${descentPct.toFixed(2)}%;` +
 			'line-gap-override:0%;}';
 
-		const css = face('/fonts/PxPlus_IBM_VGA9.woff2', '100 900');
+		const css = face('/fonts/Monocraft-Regular.woff2', '100 900');
 
 		document.getElementById('accessible-font-calibration')?.remove();
 		const styleEl = document.createElement('style');
@@ -282,7 +282,7 @@
 	}
 
 	.guide-root.font-accessible {
-		--font-pico: 'Accessible Mono', 'PxPlus IBM VGA9', 'Courier New', ui-monospace, monospace;
+		--font-pico: 'Accessible Mono', 'Monocraft', 'Courier New', ui-monospace, monospace;
 	}
 
 	:global(html::-webkit-scrollbar) {
@@ -423,7 +423,6 @@
 		gap: calc(var(--px) * 2);
 		padding: calc(var(--px) * 2) 0;
 		font-family: var(--font-pico);
-		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -513,7 +512,6 @@
 		flex: 1 1 auto;
 		min-width: 0;
 		font-family: var(--font-pico);
-		font-weight: 700;
 		font-size: 0.7rem;
 		color: var(--color-p-gray);
 		text-transform: uppercase;
@@ -577,7 +575,6 @@
 		gap: 0.5rem;
 		padding: 0.75rem 0;
 		font-family: var(--font-pico);
-		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -820,10 +817,16 @@
 	/* ── Tables ── */
 
 	.guide-container :global(table) {
+		display: block;
 		border-collapse: collapse;
 		margin: 1.5rem 0;
-		width: 100%;
+		width: auto;
+		max-width: none;
 		font-size: 18px;
+		overflow-x: auto;
+		/* Bleed past the content column toward the viewport's right edge so wide
+		   tables scroll horizontally without widening the page. */
+		margin-right: calc(-1 * max(1.5rem, (100vw - 992px) / 2));
 	}
 
 	.guide-container :global(td),
@@ -919,15 +922,27 @@
 	/* ── Images ── */
 
 	.guide-container :global(img) {
-		max-width: 100%;
-		margin: 1.5rem 0;
+		display: block;
+		width: 70%;
+		max-width: 28rem;
+		height: auto;
+		margin: 1.5rem auto;
 		border: 3px solid var(--color-p-navy-light);
+		image-rendering: pixelated;
+	}
+
+	@media (max-width: 1023px) {
+		.guide-container :global(img) {
+			width: 100%;
+			max-width: 100%;
+		}
 	}
 
 	/* ── Inline button (CTA link) ── */
 
 	.guide-container :global(.guide-button) {
-		display: inline-block;
+		display: block;
+		width: fit-content;
 		font-family: var(--font-pico);
 		font-size: 0.9rem;
 		letter-spacing: 1px;
@@ -937,7 +952,7 @@
 		background: var(--color-p-navy);
 		border: var(--px) solid var(--color-p-red-1);
 		padding: calc(var(--px) * 4) calc(var(--px) * 5) calc(var(--px) * 3);
-		margin: 1.5rem 0;
+		margin: 1.5rem auto;
 		position: relative;
 		transition: background 0.1s steps(1), color 0.1s steps(1);
 	}
