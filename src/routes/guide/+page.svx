@@ -121,6 +121,15 @@ del(bullets, item)             -- removes one item`;
 
 PICO-8 uses a language called Lua, which is simple and readable. The screen is always 128 by 128 pixels. These strict limits are a feature - they keep things simple and force creativity.
 
+<a
+	href="https://www.pico-8-edu.com/"
+	target="_blank"
+	rel="noopener"
+	class="guide-button"
+>
+	OPEN THE PICO-8 EDITOR
+</a>
+
 ### The three editor tabs you will use
 
 Press Escape to toggle between the game and the editor. Inside the editor, the tabs at the top:
@@ -1178,7 +1187,7 @@ Try each of these deliberately. Observe what happens and explain why.
 
 ---
 
-## Ship It to GitHub
+## Publish your code
 
 ### Context
 
@@ -1280,9 +1289,11 @@ Copy your repository URL and post it in the club channel. This is your ship mome
 
 </Challenge>
 
-### Step 6 - Upload your cartridge to the PICO-8 BBS
+---
 
-The PICO-8 BBS is the official Lexaloffle community site. When you upload your cartridge there, people can play it directly in a browser and find it through SPLORE.
+## Publish your game
+
+This is the last step! It's time to publish your game. The PICO-8 BBS is the official Lexaloffle community site. When you upload your cartridge there, people can play it directly in a browser and find it through SPLORE.
 
 First, make sure you have exported a PNG cartridge:
 

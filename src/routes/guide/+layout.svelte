@@ -774,4 +774,55 @@
 		margin: 1.5rem 0;
 		border: 3px solid var(--color-p-navy-light);
 	}
+
+	/* ── Inline button (CTA link) ── */
+
+	.guide-container :global(.guide-button) {
+		display: inline-block;
+		font-family: var(--font-pico);
+		font-size: 0.9rem;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		color: var(--color-p-red-1);
+		text-decoration: none;
+		background: var(--color-p-navy);
+		border: var(--px) solid var(--color-p-red-1);
+		padding: calc(var(--px) * 4) calc(var(--px) * 5) calc(var(--px) * 3);
+		margin: 1.5rem 0;
+		position: relative;
+		transition: background 0.1s steps(1), color 0.1s steps(1);
+	}
+
+	.guide-container :global(.guide-button)::before,
+	.guide-container :global(.guide-button)::after {
+		content: '';
+		position: absolute;
+		left: calc(var(--px) * -1);
+		width: calc(100% + var(--px) * 2);
+		height: var(--px);
+		background: var(--color-p-red-3);
+	}
+
+	.guide-container :global(.guide-button)::before {
+		bottom: calc(var(--px) * -2);
+	}
+
+	.guide-container :global(.guide-button)::after {
+		bottom: calc(var(--px) * -3);
+	}
+
+	.guide-container :global(.guide-button:hover) {
+		background: var(--color-p-red-1);
+		color: var(--color-p-white);
+		text-decoration: none;
+	}
+
+	.guide-container :global(.guide-button:active) {
+		transform: translateY(var(--px));
+	}
+
+	.guide-container :global(.guide-button:active)::before,
+	.guide-container :global(.guide-button:active)::after {
+		display: none;
+	}
 </style>
