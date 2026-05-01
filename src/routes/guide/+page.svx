@@ -87,7 +87,7 @@ del(bullets, item)             -- removes one item`;
 	<title>Build a Space Shooter! - downscale</title>
 </svelte:head>
 
-<h1><span class="guide-title">Build a</span><OutlineFilter twColor="--color-p-navy-light"><span class="guide-title guide-title-white">Space&nbsp;Shooter!</span></OutlineFilter></h1>
+<h1><span class="guide-title">Build a</span><OutlineFilter twColor="--color-p-navy-light"><span class="guide-title guide-title-white">Space Shooter!</span></OutlineFilter></h1>
 
 ### What you'll have by the end of this guide
 
@@ -106,8 +106,10 @@ del(bullets, item)             -- removes one item`;
 	allowfullscreen
 	width="621"
 	height="513"
-	style="border: none; overflow: hidden; max-width: 100%;"
+	style="border: none; display: block; width: 100%; max-width: 621px; aspect-ratio: 621 / 513; height: auto;"
 ></iframe>
+
+Controls: Arrow keys, Z, X, C
 
 ---
 
