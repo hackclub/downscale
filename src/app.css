@@ -4,7 +4,7 @@
 	font-family: "PICO-8";
 	/* TODO: convert to woff2 */
 	src: url("/fonts/PICO-8.ttf") format("woff2");
-	font-weight: normal;
+	font-weight: 100 900;
 	font-style: normal;
 }
 
@@ -14,6 +14,17 @@
 	src: url("/fonts/Absolute.ttf") format("woff2");
 	font-weight: normal;
 	font-style: normal;
+}
+
+/* PxPlus IBM VGA9 — VileR's Oldschool PC Font Pack, CC BY-SA 4.0.
+   Authentic 9×16 IBM PC BIOS bitmap. Single weight declared across the
+   full range so headings don't get synthesized bold. */
+@font-face {
+	font-family: "PxPlus IBM VGA9";
+	src: url("/fonts/PxPlus_IBM_VGA9.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
 }
 
 @theme {

@@ -3,6 +3,7 @@
 	import gsap from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+	import AccessibilitySwitch from '$lib/guide/AccessibilitySwitch.svelte';
 
 	if (browser) {
 		gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -16,8 +17,90 @@
 	let activeIndex = $state(-1);
 	let isMobile = $state(false);
 	let menuOpen = $state(false);
+	let accessibleFont = $state(false);
 
 	let progressPx = $state(0);
+
+	const STORAGE_KEY = 'downscale-guide-accessible-font';
+
+	$effect(() => {
+		if (!browser) return;
+		try {
+			accessibleFont = localStorage.getItem(STORAGE_KEY) === '1';
+		} catch {}
+		calibrateAccessibleFont();
+	});
+
+	function toggleAccessibleFont() {
+		accessibleFont = !accessibleFont;
+		try {
+			localStorage.setItem(STORAGE_KEY, accessibleFont ? '1' : '0');
+		} catch {}
+	}
+
+	/**
+	 * Measure both fonts at a known font-size, then inject an @font-face for
+	 * 'Accessible Mono' tuned so its glyphs occupy the same visual cell as PICO-8.
+	 *
+	 * size-adjust:        scales width AND height uniformly to match PICO-8's
+	 *                     character advance width. This is what stops line wraps
+	 *                     from shifting when the switch is flipped.
+	 * ascent/descent:     pin the line-box height to PICO-8's intrinsic height
+	 *                     so elements that rely on line-height: normal don't grow.
+	 */
+	async function calibrateAccessibleFont() {
+		if (!browser) return;
+		try {
+			await document.fonts.load('100px "PICO-8"');
+			await document.fonts.load('100px "PxPlus IBM VGA9"');
+			await document.fonts.ready;
+		} catch {}
+
+		const sample = 'MMMMMMMMMM';
+		const measure = (family: string) => {
+			const span = document.createElement('span');
+			span.style.cssText =
+				'position:absolute;visibility:hidden;white-space:pre;top:-9999px;left:-9999px;letter-spacing:0;font:100px ' +
+				family +
+				';';
+			span.textContent = sample;
+			document.body.appendChild(span);
+			const rect = span.getBoundingClientRect();
+			document.body.removeChild(span);
+			return { width: rect.width, height: rect.height };
+		};
+
+		const pico = measure('"PICO-8", monospace');
+		const mono = measure('"PxPlus IBM VGA9", monospace');
+
+		if (pico.width <= 0 || mono.width <= 0) return;
+
+		const sizeAdjust = (pico.width / mono.width) * 100;
+
+		// ascent-override / descent-override are percentages of declared font-size.
+		// We measured at font-size 100px, so pico.height is already the percentage.
+		// 80/20 split is a sensible default for Latin monospace; we don't have a
+		// reliable way to read PICO-8's actual baseline metric from the browser.
+		const ascentPct = pico.height * 0.8;
+		const descentPct = pico.height * 0.2;
+
+		const face = (file: string, weight: string) =>
+			"@font-face{font-family:'Accessible Mono';" +
+			`src:url('${file}') format('woff2');` +
+			`font-weight:${weight};font-display:swap;` +
+			`size-adjust:${sizeAdjust.toFixed(2)}%;` +
+			`ascent-override:${ascentPct.toFixed(2)}%;` +
+			`descent-override:${descentPct.toFixed(2)}%;` +
+			'line-gap-override:0%;}';
+
+		const css = face('/fonts/PxPlus_IBM_VGA9.woff2', '100 900');
+
+		document.getElementById('accessible-font-calibration')?.remove();
+		const styleEl = document.createElement('style');
+		styleEl.id = 'accessible-font-calibration';
+		styleEl.textContent = css;
+		document.head.appendChild(styleEl);
+	}
 
 	// Compute progress track fill to match the active dot's position
 	$effect(() => {
@@ -103,52 +186,30 @@
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </svelte:head>
 
-<!-- Mobile navbar (outside guide-page for sticky to work) -->
-{#if isMobile}
-	<div class="mobile-navbar">
-		<button class="menu-btn" onclick={toggleMenu} aria-label="Toggle outline">
-			<span class="menu-icon" class:open={menuOpen}>
-				<span></span>
-				<span></span>
-				<span></span>
+<div class="guide-root" class:font-accessible={accessibleFont}>
+	<!-- Mobile navbar (outside guide-page for sticky to work) -->
+	{#if isMobile}
+		<div class="mobile-navbar">
+			<button class="menu-btn" onclick={toggleMenu} aria-label="Toggle outline">
+				<span class="menu-icon" class:open={menuOpen}>
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</button>
+			<span class="mobile-section-label">
+				{activeIndex >= 0 && headings[activeIndex] ? headings[activeIndex].text : 'Build a Space Shooter'}
 			</span>
-		</button>
-		<span class="mobile-section-label">
-			{activeIndex >= 0 && headings[activeIndex] ? headings[activeIndex].text : 'Build a Space Shooter'}
-		</span>
-	</div>
+			<div class="mobile-switch-slot">
+				<AccessibilitySwitch active={accessibleFont} onToggle={toggleAccessibleFont} compact />
+			</div>
+		</div>
 
-	{#if menuOpen}
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
-		<div class="menu-backdrop" onclick={() => menuOpen = false} onkeydown={() => {}}></div>
-		<nav class="menu-drawer" aria-label="Guide sections">
-			<ol class="drawer-list">
-				{#each headings as heading, i}
-					<li
-						class:active={activeIndex === i}
-						class:completed={activeIndex > -1 && i < activeIndex}
-					>
-						<a
-							href="#{heading.id}"
-							class:active={activeIndex === i}
-							onclick={(e) => handleClick(e, heading.id)}
-						>
-							<span class="drawer-number">{String(i + 1).padStart(2, '0')}</span>
-							<span>{heading.text}</span>
-						</a>
-					</li>
-				{/each}
-			</ol>
-		</nav>
-	{/if}
-{/if}
-
-<div class="guide-page">
-	<div class="guide-layout">
-		<!-- Desktop sidebar -->
-		<nav class="guide-sidebar" aria-label="Guide sections">
-			<div class="sidebar-inner">
-				<ol class="sidebar-list" bind:this={sidebarList}>
+		{#if menuOpen}
+			<!-- svelte-ignore a11y_no_static_element_interactions -->
+			<div class="menu-backdrop" onclick={() => menuOpen = false} onkeydown={() => {}}></div>
+			<nav class="menu-drawer" aria-label="Guide sections">
+				<ol class="drawer-list">
 					{#each headings as heading, i}
 						<li
 							class:active={activeIndex === i}
@@ -158,22 +219,56 @@
 								href="#{heading.id}"
 								class:active={activeIndex === i}
 								onclick={(e) => handleClick(e, heading.id)}
-								aria-current={activeIndex === i ? 'true' : undefined}
 							>
-								<span class="sidebar-number">{String(i + 1).padStart(2, '0')}</span>
-								<span class="sidebar-label">{heading.text}</span>
+								<span class="drawer-number">{String(i + 1).padStart(2, '0')}</span>
+								<span>{heading.text}</span>
 							</a>
 						</li>
 					{/each}
 				</ol>
-				<div
-					class="sidebar-track"
-					style="--progress: {progressPx}px"
-				></div>
+			</nav>
+		{/if}
+	{/if}
+
+	<div class="guide-page">
+		<!-- Desktop floating switch (top right of viewport) -->
+		{#if !isMobile}
+			<div class="desktop-switch-slot">
+				<AccessibilitySwitch active={accessibleFont} onToggle={toggleAccessibleFont} />
 			</div>
-		</nav>
-		<div class="guide-container" bind:this={guideContainer}>
-			{@render children()}
+		{/if}
+
+		<div class="guide-layout">
+			<!-- Desktop sidebar -->
+			<nav class="guide-sidebar" aria-label="Guide sections">
+				<div class="sidebar-inner">
+					<ol class="sidebar-list" bind:this={sidebarList}>
+						{#each headings as heading, i}
+							<li
+								class:active={activeIndex === i}
+								class:completed={activeIndex > -1 && i < activeIndex}
+							>
+								<a
+									href="#{heading.id}"
+									class:active={activeIndex === i}
+									onclick={(e) => handleClick(e, heading.id)}
+									aria-current={activeIndex === i ? 'true' : undefined}
+								>
+									<span class="sidebar-number">{String(i + 1).padStart(2, '0')}</span>
+									<span class="sidebar-label">{heading.text}</span>
+								</a>
+							</li>
+						{/each}
+					</ol>
+					<div
+						class="sidebar-track"
+						style="--progress: {progressPx}px"
+					></div>
+				</div>
+			</nav>
+			<div class="guide-container" bind:this={guideContainer}>
+				{@render children()}
+			</div>
 		</div>
 	</div>
 </div>
@@ -184,6 +279,10 @@
 		scroll-padding-top: 2rem;
 		scrollbar-color: var(--color-p-red-1) transparent;
 		scrollbar-width: thin;
+	}
+
+	.guide-root.font-accessible {
+		--font-pico: 'Accessible Mono', 'PxPlus IBM VGA9', 'Courier New', ui-monospace, monospace;
 	}
 
 	:global(html::-webkit-scrollbar) {
@@ -207,11 +306,31 @@
 	.guide-page {
 		--px: 3px;
 		--guide-red-outline: #422136;
+		position: relative;
 		background: var(--color-p-navy);
 		min-height: 100vh;
 		padding: 3rem 1.5rem 6rem;
 		font-family: 'Jost', sans-serif;
 		color: var(--color-p-lightgray);
+	}
+
+	/* ── Desktop floating switch ── */
+
+	.desktop-switch-slot {
+		position: fixed;
+		top: 1.5rem;
+		right: 1.5rem;
+		z-index: 15;
+	}
+
+	/* Below ~1240px there's not enough whitespace to the right of the layout for
+	   a fixed switch. Drop to absolute (scrolls with page) to avoid content overlap. */
+	@media (max-width: 1240px) and (min-width: 1024px) {
+		.desktop-switch-slot {
+			position: absolute;
+			top: 1.5rem;
+			right: 1.5rem;
+		}
 	}
 
 	:global(body) {
@@ -304,6 +423,7 @@
 		gap: calc(var(--px) * 2);
 		padding: calc(var(--px) * 2) 0;
 		font-family: var(--font-pico);
+		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -390,7 +510,10 @@
 	}
 
 	.mobile-section-label {
+		flex: 1 1 auto;
+		min-width: 0;
 		font-family: var(--font-pico);
+		font-weight: 700;
 		font-size: 0.7rem;
 		color: var(--color-p-gray);
 		text-transform: uppercase;
@@ -398,6 +521,12 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+
+	.mobile-switch-slot {
+		flex-shrink: 0;
+		display: flex;
+		align-items: center;
 	}
 
 	.menu-backdrop {
@@ -448,6 +577,7 @@
 		gap: 0.5rem;
 		padding: 0.75rem 0;
 		font-family: var(--font-pico);
+		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -585,6 +715,25 @@
 		margin-bottom: 0.75rem;
 		text-transform: uppercase;
 		letter-spacing: 1px;
+	}
+
+	/* Accessible-mode header treatment: swap the pixel font for Jost so headers
+	   read as proper typography while body code stays pixel. Gradient split
+	   shifts to 50% to match Jost's baseline. */
+	.guide-root.font-accessible .guide-container :global(h2),
+	.guide-root.font-accessible .guide-container :global(h3) {
+		font-family: 'Jost', sans-serif;
+		font-weight: 700;
+		font-size: 1.6rem;
+	}
+
+	.guide-root.font-accessible .guide-container :global(h2) {
+		background-image: linear-gradient(to bottom, var(--color-p-red-1) 50%, var(--color-p-red-2) 50%);
+	}
+
+	.guide-root.font-accessible .guide-container :global(h3) {
+		font-size: 1.4rem;
+		background-image: linear-gradient(to bottom, var(--color-p-white) 50%, var(--color-p-lightgray) 50%);
 	}
 
 	/* ── Body text ── */
