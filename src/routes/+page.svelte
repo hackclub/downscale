@@ -284,7 +284,7 @@
                     RUN A WORKSHOP!
                 </h2>
                 <p class="text-p8 text-p-white">
-                    Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one?<span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
+                    Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
                 </p>
                 <WorkshopForm />
             </div>

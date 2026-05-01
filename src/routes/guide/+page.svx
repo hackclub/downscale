@@ -117,7 +117,7 @@ del(bullets, item)             -- removes one item`;
 
 ### Context
 
-PICO-8 is a fantasy console - a tiny, self-contained game-making machine that runs on your real computer. It has its own code editor, sprite editor, and sound editor in one window. Every game is called a cartridge.
+[PICO-8](https://www.pico-8-edu.com/) is a fantasy console - a tiny, self-contained game-making machine that runs on your real computer. It has its own code editor, sprite editor, and sound editor in one window. Every game is called a cartridge.
 
 PICO-8 uses a language called Lua, which is simple and readable. The screen is always 128 by 128 pixels. These strict limits are a feature - they keep things simple and force creativity.
 
@@ -1239,7 +1239,7 @@ https://github.com/YOUR-USERNAME/space-shooter-pico8
 
 A README is the first thing anyone sees when they visit your repository. GitHub created one for you automatically. Click the pencil icon on the README to edit it.
 
-Replace the default text with something like this:
+Replace the default text with something like this (yours should look different):
 
 ```md
 # Space Shooter
@@ -1279,6 +1279,27 @@ Copy your repository URL and post it in the club channel. This is your ship mome
 - The URL works when you open it in a new tab
 
 </Challenge>
+
+### Step 6 - Upload your cartridge to the PICO-8 BBS
+
+The PICO-8 BBS is the official Lexaloffle community site. When you upload your cartridge there, people can play it directly in a browser and find it through SPLORE.
+
+First, make sure you have exported a PNG cartridge:
+
+```text
+export spaceshooter.p8.png
+```
+
+Then publish it:
+
+1. Go to [lexaloffle.com/pico-8.php?page=submit](https://www.lexaloffle.com/pico-8.php?page=submit)
+2. Sign in with your Lexaloffle account, or create one if you need to
+3. Click **Choose File** and select `spaceshooter.p8.png`
+4. Give your post a clear title, like `Space Shooter`
+5. Write a short description of what you made and how to play
+6. Add tags if the page asks for them, such as `shooter`, `arcade`, or `workshop`
+7. Preview the post and make sure the cartridge loads
+8. Copy the link and [submit it](https://forms.hackclub.com/downscale-project)!
 
 ---
 
