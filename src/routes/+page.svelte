@@ -202,12 +202,32 @@
     <h1 class="text-p8-title leading-p8-title font-title pt-8 text-center -mb-[18.1px] relative z-1">
         <OutlineFilter>
             <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
+                open for clubs!
+            </ShinyTitle>
+        </OutlineFilter>
+    </h1>
+
+    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0" id="clubs">
+        <div class="workshop-panel__notches" aria-hidden="true"></div>
+        <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
+        <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
+            RUN A WORKSHOP!
+        </h2>
+        <p class="text-p8 text-p-white">
+            Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
+        </p>
+        <WorkshopForm />
+    </section>
+
+    <h1 class="text-p8-title leading-p8-title font-title pt-20 text-center -mb-[18.1px] relative z-1">
+        <OutlineFilter>
+            <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
                 coming to teens soon...
             </ShinyTitle>
         </OutlineFilter>
     </h1>
 
-    <div class="bg-p-navy max-w-4xl mx-auto pt-10 pb-8 px-12 max-sm:px-6 relative z-0">        
+    <div class="bg-p-navy max-w-4xl mx-auto pt-10 pb-8 px-12 max-sm:px-6 relative z-0">
         <p class="text-p8 text-white">
             <!-- <ShinyText c1="var(--color-p-red-1)" c2="var(--color-p-red-2)" style="display: inline;">
                 <span class="relative before:absolute before:top-0 before:left-0 before:w-[calc(100%-5px)] before:h-[calc(100%-2.5px)] before:bg-p-navy-light before:-z-1">
@@ -270,27 +290,7 @@
                 <p class="text-p8 text-p-red-2 pt-[26px] text-center">{errorMessage}</p>
             </div>
         </div>
-    </div>    
-
-    <h1 class="text-p8-title leading-p8-title font-title pt-20 text-center -mb-[18.1px] relative z-1">
-        <OutlineFilter>
-            <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
-                open for clubs!
-            </ShinyTitle>
-        </OutlineFilter>
-    </h1>
-
-    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0" id="clubs">
-        <div class="workshop-panel__notches" aria-hidden="true"></div>
-        <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
-        <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
-            RUN A WORKSHOP!
-        </h2>
-        <p class="text-p8 text-p-white">
-            Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
-        </p>
-        <WorkshopForm />
-    </section>
+    </div>
 </div>
 
 <!-- <div class="bg-p-red-1 relative z-2">
@@ -341,7 +341,7 @@
     }
     .workshop-panel__notches-bottom {
         position: absolute;
-        transform: translateY(15px);
+        transform: translateY(14px);
         inset: 0;
         pointer-events: none;
         background:
