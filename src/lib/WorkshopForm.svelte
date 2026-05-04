@@ -12,10 +12,10 @@
 	data-fillout-embed-type="popup"
 	data-fillout-inherit-parameters
 	data-fillout-popup-size="large"
-	class="workshop-form-button group mt-8 block w-full max-w-xl cursor-pointer border-[5px] border-p-white px-[15px] pt-[10px] pb-[6px] text-left hover:bg-p-navy active:translate-y-[5px]"
+	class="workshop-form-button group mx-auto mt-10 block w-full max-w-xl cursor-pointer border-[5px] border-p-red-1 px-[15px] pt-[10px] pb-[6px] text-center hover:bg-p-red-1 active:translate-y-[5px] active:after:hidden active:before:hidden"
 >
-	<span class="text-p8 text-p-white">
-		<span class="text-p8 w-max bg-[linear-gradient(to_bottom,var(--color-p-white)_36%,var(--color-p-lightgray)_36%)] bg-clip-text text-transparent group-hover:bg-[linear-gradient(to_bottom,var(--color-p-red-1)_36%,var(--color-p-red-2)_36%)]">
+	<span class="text-p8 text-p-red-1">
+		<span class="text-p8 w-max bg-[linear-gradient(to_bottom,var(--color-p-red-1)_36%,var(--color-p-red-2)_36%)] bg-clip-text text-transparent group-hover:bg-[linear-gradient(to_bottom,var(--color-p-white)_36%,var(--color-p-white)_36%)]">
 			I WANT TO RUN ONE
 		</span>
 	</span>
@@ -33,7 +33,7 @@
 		bottom: -15px;
 		left: -5px;
 		height: 5px;
-		background: var(--color-p-gray);
+		background: var(--color-p-red-3);
 	}
 
 	.workshop-form-button::before {
@@ -43,7 +43,6 @@
 		bottom: -10px;
 		left: -5px;
 		height: 5px;
-		background: var(--color-p-navy);
 	}
 
 	.workshop-form-button:active::before,

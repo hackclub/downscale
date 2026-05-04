@@ -198,6 +198,12 @@
 </div>
 
 <div class=" bg-p-red-1 px-12 max-sm:px-4 pt-16 pb-36">
+
+    <p class="max-w-4xl mx-auto text-p8 text-p-white px-12 pt-8 pb-14">
+        downscale
+        
+        is a <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-red-2)] hover:bg-p-red-2" target="_blank">Hack Club</a> <img src="/new-tab-red.png" alt="" class="h-[30px] inline -ml-3"></span> program about building retro games with <span class="inline-block"><a href="https://www.lexaloffle.com/pico-8.php" class="underline-p8 [--underline-color:var(--color-p-red-2)] hover:bg-p-red-2" target="_blank">PICO-8</a> <img src="/new-tab-red.png" alt="" class="h-[30px] inline -ml-3"></span>.
+    </p>
     
     <h1 class="text-p8-title leading-p8-title font-title pt-8 text-center -mb-[18.1px] relative z-1">
         <OutlineFilter>
@@ -207,9 +213,7 @@
         </OutlineFilter>
     </h1>
 
-    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0" id="clubs">
-        <div class="workshop-panel__notches" aria-hidden="true"></div>
-        <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
+    <div class="bg-p-navy max-w-4xl mx-auto pt-16 pb-16 px-12 max-sm:px-6 relative z-0" id="clubs">
         <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
             RUN A WORKSHOP!
         </h2>
@@ -217,33 +221,35 @@
             Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
         </p>
         <WorkshopForm />
-    </section>
+    </div>
 
     <h1 class="text-p8-title leading-p8-title font-title pt-20 text-center -mb-[18.1px] relative z-1">
-        <OutlineFilter>
+        <OutlineFilter twColor="--color-p-navy-light">
             <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
                 coming to teens soon...
             </ShinyTitle>
         </OutlineFilter>
     </h1>
 
-    <div class="bg-p-navy max-w-4xl mx-auto pt-10 pb-8 px-12 max-sm:px-6 relative z-0">
-        <p class="text-p8 text-white">
+    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 pt-16 pb-12 relative z-0">
+        <div class="workshop-panel__notches" aria-hidden="true"></div>
+        <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
+        <p class="text-p8 text-p-white">
             <!-- <ShinyText c1="var(--color-p-red-1)" c2="var(--color-p-red-2)" style="display: inline;">
                 <span class="relative before:absolute before:top-0 before:left-0 before:w-[calc(100%-5px)] before:h-[calc(100%-2.5px)] before:bg-p-navy-light before:-z-1">
                     DOWNSCALE
                 </span>
             </ShinyText> -->
 
-            downscale
+<!--             downscale
             
-            is a <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Hack Club</a> <img src="/new-tab.png" alt="" class="h-[30px] inline -ml-3"></span> program about building retro games with <span class="inline-block"><a href="https://www.lexaloffle.com/pico-8.php" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">PICO-8</a> <img src="/new-tab.png" alt="" class="h-[30px] inline -ml-3"></span>.
+            is a <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Hack Club</a> <img src="/new-tab.png" alt="" class="h-[30px] inline -ml-3"></span> program about building retro games with <span class="inline-block"><a href="https://www.lexaloffle.com/pico-8.php" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">PICO-8</a> <img src="/new-tab.png" alt="" class="h-[30px] inline -ml-3"></span>. -->
 
 
             
         </p>
 
-        <div class="mt-10 mb-6 mx-auto w-full flex flex-col items-center max-w-xl">
+        <div class="mt-8 mb-6 mx-auto w-full flex flex-col items-center max-w-xl">
             <div class="email-wrapper w-full" bind:this={emailWrapper}>
                 <div class="email-inner">
                     <div class="relative overflow-hidden" bind:this={emailInputContainer}>
@@ -252,7 +258,7 @@
                             placeholder="YOUR EMAIL"
                             bind:value={emailValue}
                             disabled={isSubmitted && !hasError}
-                            class="border-p-red-2 border-[5px] pt-[10px] pb-[6px] px-[15px] w-full text-p8 text-p-red-1 placeholder:text-p-red-2/50 focus:outline-none disabled:cursor-default"
+                            class="border-p-lightgray border-[5px] pt-[10px] pb-[6px] px-[15px] w-full text-p8 text-p-white placeholder:text-p-lightgray/50 focus:outline-none disabled:cursor-default"
                         />
                         {#if isSubmitting}
                             <div class="absolute right-[20px] top-1/2 -translate-y-1/2">
@@ -265,7 +271,7 @@
                         {/if}
                         <div
                             bind:this={fillElement}
-                            class="absolute top-full left-0 right-0 h-full bg-p-red-1 flex items-center justify-center"
+                            class="absolute top-full left-0 right-0 h-full bg-p-navy flex items-center justify-center"
                         >
                             {#if hasError}
                                 <img src="/x.png" alt="" class="w-[25px] h-[25px]" />
@@ -278,10 +284,10 @@
             </div>
             <button
                 onclick={revealEmail}
-                class="border-p-red-1 border-[5px] pt-[10px] pb-[6px] px-[15px] text-center w-full relative after:absolute after:w-[calc(100%+10px)] after:h-[5px] after:-left-[5px] after:-bottom-[15px] after:bg-p-red-3 before:absolute before:w-[calc(100%+10px)] before:h-[5px] before:-left-[5px] before:-bottom-[10px] hover:bg-p-red-1 group cursor-pointer active:translate-y-[5px] active:after:hidden active:before:hidden"
+                class="border-p-white border-[5px] pt-[10px] pb-[6px] px-[15px] text-center w-full relative after:absolute after:w-[calc(100%+10px)] after:h-[5px] after:-left-[5px] after:-bottom-[15px] after:bg-p-gray before:absolute before:w-[calc(100%+10px)] before:h-[5px] before:-left-[5px] before:-bottom-[10px] before:bg-p-navy hover:bg-p-navy-light group cursor-pointer active:translate-y-[5px] active:after:hidden active:before:hidden"
             >
-                <span class="text-p8 text-p-red-1">
-                    <span id="shiny-text" class="text-p8 w-max text-transparent bg-clip-text bg-[linear-gradient(to_bottom,var(--color-p-red-1)_36%,var(--color-p-red-2)_36%)] group-hover:bg-[linear-gradient(to_bottom,var(--color-p-white)_36%,var(--color-p-white)_36%)]">
+                <span class="text-p8 text-p-white">
+                    <span id="shiny-text" class="text-p8 w-max text-transparent bg-clip-text bg-[linear-gradient(to_bottom,var(--color-p-white)_36%,var(--color-p-lightgray)_36%)] group-hover:bg-[linear-gradient(to_bottom,var(--color-p-red-1)_36%,var(--color-p-red-2)_36%)]">
                         TELL ME WHEN IT'S HERE
                     </span>
                 </span>
@@ -290,7 +296,7 @@
                 <p class="text-p8 text-p-red-2 pt-[26px] text-center">{errorMessage}</p>
             </div>
         </div>
-    </div>
+    </section>
 </div>
 
 <!-- <div class="bg-p-red-1 relative z-2">
