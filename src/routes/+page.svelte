@@ -202,7 +202,7 @@
     <h1 class="text-p8-title leading-p8-title font-title pt-8 text-center -mb-[18.1px] relative z-1">
         <OutlineFilter>
             <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
-                coming very soon...
+                coming to teens soon...
             </ShinyTitle>
         </OutlineFilter>
     </h1>
@@ -272,23 +272,24 @@
         </div>
     </div>    
 
-    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0 mt-12" id="clubs">
+    <h1 class="text-p8-title leading-p8-title font-title pt-20 text-center -mb-[18.1px] relative z-1">
+        <OutlineFilter>
+            <ShinyTitle c1="var(--color-p-white)" c2="var(--color-p-lightgray)">
+                open for clubs!
+            </ShinyTitle>
+        </OutlineFilter>
+    </h1>
+
+    <section class="workshop-panel bg-p-navy-light max-w-4xl mx-auto px-12 max-sm:px-6 py-18 relative z-0" id="clubs">
         <div class="workshop-panel__notches" aria-hidden="true"></div>
         <div class="workshop-panel__notches-bottom" aria-hidden="true"></div>
-        <div class="grid grid-cols-[auto_1fr] max-md:grid-cols-1 gap-x-8 gap-y-5 items-start">
-            <div class="workshop-kicker text-p8 text-p-gray uppercase leading-none max-md:w-max">
-                clubs
-            </div>
-            <div>
-                <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
-                    RUN A WORKSHOP!
-                </h2>
-                <p class="text-p8 text-p-white">
-                    Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
-                </p>
-                <WorkshopForm />
-            </div>
-        </div>
+        <h2 class="text-p8 text-p-white mb-5 leading-[1.35]">
+            RUN A WORKSHOP!
+        </h2>
+        <p class="text-p8 text-p-white">
+            Existing clubs are invited to run a downscale workshop! Don't have a club and interested in running one? <span class="inline-block"><a href="https://hackclub.com" class="underline-p8 [--underline-color:var(--color-p-gray)] hover:bg-p-red-1" target="_blank">Start a new club</a><img src="/new-tab.png" alt="" class="h-[30px] inline ml-1"></span>!
+        </p>
+        <WorkshopForm />
     </section>
 </div>
 
@@ -345,20 +346,6 @@
         pointer-events: none;
         background:
             linear-gradient(90deg, var(--color-p-navy) 40px, transparent 5px, transparent 80px, var(--color-p-navy) 10px) bottom left / 80px 5px repeat-x;
-    }
-
-    .workshop-kicker {
-        writing-mode: vertical-rl;
-        text-orientation: mixed;
-        transform: rotate(180deg);
-        padding-top: 5px;
-    }
-
-    @media (max-width: 767px) {
-        .workshop-kicker {
-            writing-mode: horizontal-tb;
-            transform: none;
-        }
     }
 
     .animate-frame-swap {
