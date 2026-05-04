@@ -102,11 +102,11 @@ del(bullets, item)             -- removes one item`;
 
 <iframe
 	title="Space Shooter demo"
-	src="https://www.lexaloffle.com/bbs/widget.php?pid=downscaleclubsdemo"
+	src="/p8-space-shooter.html"
 	allowfullscreen
-	width="621"
-	height="513"
-	style="border: none; display: block; width: 100%; max-width: 621px; aspect-ratio: 621 / 513; height: auto;"
+	width="540"
+	height="540"
+	style="border: none; display: block; width: 100%; max-width: 540px; aspect-ratio: 1 / 1; height: auto; margin: 0 auto;"
 ></iframe>
 
 Controls: Arrow keys, Z, X, C
