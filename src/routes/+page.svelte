@@ -129,7 +129,7 @@
 	}
 </script>
 
-<div class="absolute top-0 left-0 right-0 h-[100vh] bg-p-red-1 -translate-y-full pointer-events-none"></div>
+<div class="absolute top-0 left-0 right-0 h-[100vh] bg-p-navy -translate-y-full pointer-events-none"></div>
 <div class="relative min-h-[calc(100vh-20px)] w-full bg-p-navy overflow-hidden">
 	<Particles density={20} maxSpeed={3} />
 	<Particles density={3} minSpeed={2} maxSpeed={4} z={1} twColor="--color-p-gray" />
