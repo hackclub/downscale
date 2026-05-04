@@ -16,12 +16,11 @@
 	font-style: normal;
 }
 
-/* PxPlus IBM VGA9 — VileR's Oldschool PC Font Pack, CC BY-SA 4.0.
-   Authentic 9×16 IBM PC BIOS bitmap. Single weight declared across the
-   full range so headings don't get synthesized bold. */
+/* Monocraft — Idrees Hassan, OFL. Single weight (Regular) declared across
+   the full range so headings don't get synthesized bold. */
 @font-face {
-	font-family: "PxPlus IBM VGA9";
-	src: url("/fonts/PxPlus_IBM_VGA9.woff2") format("woff2");
+	font-family: "Monocraft";
+	src: url("/fonts/Monocraft-Regular.woff2") format("woff2");
 	font-weight: 100 900;
 	font-style: normal;
 	font-display: swap;
