@@ -223,7 +223,7 @@
         <WorkshopForm />
 
             <button
-                onclick={revealEmail}
+                onclick={() => window.open("https://forms.hackclub.com/downscale-project", "_blank")}
                 class="workshop-form-button group relative mx-auto mt-10 block w-full max-w-xl cursor-pointer border-[5px] border-p-red-1 px-[15px] pt-[10px] pb-[6px] text-center hover:bg-p-red-1 before:absolute before:right-[-5px] before:bottom-[-10px] before:left-[-5px] before:h-[5px] before:content-[''] after:absolute after:right-[-5px] after:bottom-[-15px] after:left-[-5px] after:h-[5px] after:bg-p-red-3 after:content-[''] hover:before:hidden hover:after:hidden active:translate-y-[5px] active:before:hidden active:after:hidden"
             >
                 <span class="text-p8 text-p-red-1">
